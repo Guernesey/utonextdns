@@ -1,7 +1,7 @@
 {
   "source": "https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz",
   "homepage": "https://github.com/Guernesey/t1nextdns",
-  "generated_at": "2026-03-19T09:26:26+00:00",
+  "generated_at": "2026-03-19T09:58:17+00:00",
   "categories": [
     {
       "id": "actuality",
@@ -15,12 +15,12 @@
     {
       "id": "adult",
       "name": "Adult",
-      "description": "Combined UT1 categories: adult, agressif, drogue, lingerie, sexual_education, dating, celebrity, mixed_adult",
+      "description": "Combined UT1 categories: adult",
       "raw_urls": [
         "https://raw.githubusercontent.com/Guernesey/t1nextdns/main/dist/toulouse-adult-1.txt",
         "https://raw.githubusercontent.com/Guernesey/t1nextdns/main/dist/toulouse-adult-2.txt"
       ],
-      "entries_count": 4597064
+      "entries_count": 4589669
     },
     {
       "id": "financial",
@@ -30,6 +30,15 @@
         "https://raw.githubusercontent.com/Guernesey/t1nextdns/main/dist/toulouse-financial.txt"
       ],
       "entries_count": 17175
+    },
+    {
+      "id": "sensitive",
+      "name": "Sensitive",
+      "description": "Combined UT1 categories: agressif, drogue, lingerie, sexual_education, dating, celebrity, mixed_adult",
+      "raw_urls": [
+        "https://raw.githubusercontent.com/Guernesey/t1nextdns/main/dist/toulouse-sensitive.txt"
+      ],
+      "entries_count": 8162
     },
     {
       "id": "shopping",

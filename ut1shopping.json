@@ -2,10 +2,8 @@
   "name": "Shopping",
   "website": "https://github.com/Guernesey/t1nextdns",
   "description": "Combined UT1 categories: shopping",
-  "source": [
-    {
-      "url": "https://raw.githubusercontent.com/Guernesey/t1nextdns/main/dist/toulouse-shopping.txt",
-      "format": "domains"
-    }
-  ]
+  "source": {
+    "url": "https://raw.githubusercontent.com/Guernesey/t1nextdns/main/dist/toulouse-shopping.txt",
+    "format": "domains"
+  }
 }
