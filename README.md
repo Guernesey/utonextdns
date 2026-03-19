@@ -21,27 +21,7 @@ python -m pip install requests pyyaml
 
 ## Local Usage
 
-1. Create a `.env` file in **YAML** (required). Example:
-
-```yaml
-bundles:
-  - name: Adult
-    categories:
-      - adult
-      - agressif
-      - drogue
-      - lingerie
-      - sexual_education
-      - dating
-      - celebrity
-  - name: Actuality
-    categories: press, radio, fakenews, sports
-  - name: Financial
-    categories:
-      - financial
-      - bitcoin
-      - cryptojacking
-```
+1. Edit the existing `.env` file (already committed in the repo). It is written in **YAML** and serves as the canonical template for defining bundles and GitHub metadata. Adjust the sections to match the categories you want to publish—no separate example is required.
 
 - `bundles` describes every published list (comma-separated strings or true YAML lists are both supported). At least one entry is required.
 - Per-category files are always generated for every available UT1 category.
