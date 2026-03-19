@@ -16,29 +16,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate .env from LIST_GROUPS
-        env:
-          LIST_GROUPS: ${{ vars.LIST_GROUPS }}
-        run: |
-          if [ -z "$LIST_GROUPS" ]; then
-            echo "LIST_GROUPS repository variable is empty" >&2
-            exit 1
-          fi
-          printf '%s\n' "$LIST_GROUPS" > .env
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests pyyaml
 
       - name: Generate lists
-        env:
-          GITHUB_OWNER: ${{ github.repository_owner }}
-          GITHUB_REPO: ${{ github.event.repository.name }}
-          GITHUB_BRANCH: ${{ github.ref_name }}
         run: python update_lists.py
 
       - name: Commit and push changes

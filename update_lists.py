@@ -14,9 +14,10 @@ import tarfile
 import time
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
-from typing import Iterable
+from typing import Any, Iterable, Mapping
 
 import requests
+import yaml
 
 SOURCE_URL = "https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz"
 DIST_DIR = Path("dist")
@@ -24,7 +25,7 @@ TMP_DIR = Path("tmp")
 CATEGORY_WORK_DIR = TMP_DIR / "categories"
 ARCHIVE_PATH = TMP_DIR / "blacklists.tar.gz"
 METADATA_PATH = Path("metadata.json")
-ENV_PATH = Path(".env")
+CONFIG_PATH = Path(".env")
 GIT_AUTO_COMMIT_PUSH_ENV = "GIT_AUTO_COMMIT_PUSH"
 GIT_COMMIT_MESSAGE_ENV = "GIT_COMMIT_MESSAGE"
 MAX_BUNDLE_BYTES = 70 * 1024 * 1024
@@ -57,20 +58,48 @@ def cleanup_temporary_files() -> None:
         pass
 
 
-def load_dotenv(path: Path) -> None:
+def load_config(path: Path) -> Mapping[str, Any]:
     if not path.exists():
-        return
+        raise RuntimeError(
+            f"Configuration file '{path}' not found. Please create it using the YAML format described in README.md."
+        )
 
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
+    raw = path.read_text(encoding="utf-8")
+    data = yaml.safe_load(raw) or {}
+    if not isinstance(data, Mapping):
+        raise RuntimeError("Configuration root must be a YAML mapping (dictionary).")
 
-        key, value = line.split("=", 1)
-        key = key.strip()
-        value = value.strip().strip("\"'")
-        if key and key not in os.environ:
-            os.environ[key] = value
+    return data
+
+
+def to_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return value != 0
+    if isinstance(value, str):
+        return value.strip().lower() in {"1", "true", "yes", "on"}
+    return False
+
+
+def apply_env_overrides_from_config(config: Mapping[str, Any]) -> None:
+    def set_env_if_missing(env_key: str, value: Any) -> None:
+        if value is None or env_key in os.environ:
+            return
+        os.environ[env_key] = str(value)
+
+    github_cfg = config.get("github")
+    if isinstance(github_cfg, Mapping):
+        set_env_if_missing("GITHUB_OWNER", github_cfg.get("owner"))
+        set_env_if_missing("GITHUB_REPO", github_cfg.get("repo"))
+        set_env_if_missing("GITHUB_BRANCH", github_cfg.get("branch"))
+
+    git_cfg = config.get("git")
+    if isinstance(git_cfg, Mapping):
+        if "auto_commit" in git_cfg:
+            os.environ[GIT_AUTO_COMMIT_PUSH_ENV] = "1" if to_bool(git_cfg.get("auto_commit")) else "0"
+        if "commit_message" in git_cfg and GIT_COMMIT_MESSAGE_ENV not in os.environ:
+            os.environ[GIT_COMMIT_MESSAGE_ENV] = str(git_cfg.get("commit_message"))
 
 
 def is_truthy(value: str) -> bool:
@@ -208,43 +237,32 @@ def list_available_categories(archive: tarfile.TarFile) -> list[str]:
     return sorted(categories)
 
 
-def parse_group_definition_line(line: str) -> tuple[str, list[str]] | None:
-    if ":" not in line:
-        return None
+def parse_list_groups_from_config(config: Mapping[str, Any]) -> list[tuple[str, list[str]]]:
+    bundles_cfg = config.get("bundles")
+    if not isinstance(bundles_cfg, list):
+        return []
 
-    raw_name, raw_categories = line.split(":", 1)
-    group_name = raw_name.strip()
-    if not group_name:
-        return None
+    bundles: list[tuple[str, list[str]]] = []
+    for entry in bundles_cfg:
+        if not isinstance(entry, Mapping):
+            continue
+        name = entry.get("name")
+        categories = entry.get("categories")
+        if not isinstance(name, str) or not name.strip():
+            continue
+        if isinstance(categories, str):
+            categories_list = [part.strip() for part in categories.split(",") if part.strip()]
+        elif isinstance(categories, list):
+            categories_list = [str(part).strip() for part in categories if str(part).strip()]
+        else:
+            categories_list = []
 
-    categories = [
-        category.strip()
-        for category in raw_categories.replace(";", ",").split(",")
-        if category.strip()
-    ]
-    if not categories:
-        return None
+        if not categories_list:
+            continue
 
-    return group_name, categories
+        bundles.append((name.strip(), categories_list))
 
-
-def parse_list_groups() -> list[tuple[str, list[str]]]:
-    groups: dict[str, list[str]] = {}
-
-    if ENV_PATH.exists():
-        for raw_line in ENV_PATH.read_text(encoding="utf-8").splitlines():
-            line = raw_line.strip()
-            if not line or line.startswith("#") or "=" in line:
-                continue
-
-            parsed = parse_group_definition_line(line)
-            if parsed is None:
-                continue
-
-            group_name, categories = parsed
-            groups[group_name] = categories
-
-    return list(groups.items())
+    return bundles
 
 
 def category_filename(category: str) -> str:
@@ -587,18 +605,19 @@ def main() -> None:
     start_time = time.perf_counter()
     log("Starting UT1 → NextDNS generation...")
     ensure_directories()
-    load_dotenv(ENV_PATH)
+    config = load_config(CONFIG_PATH)
+    apply_env_overrides_from_config(config)
     cleanup_previous_outputs()
 
     try:
         log("Downloading UT1 archive...")
         download_archive(SOURCE_URL, ARCHIVE_PATH)
-        list_groups = parse_list_groups()
+        list_groups = parse_list_groups_from_config(config)
 
         if not list_groups:
             raise RuntimeError(
-                "No grouped lists defined in .env. Please specify at least one line in the format "
-                "<ListName>:<category1>,<category2>,..."
+                "No bundles defined in .env. Please add at least one entry under the 'bundles' section "
+                "using the YAML format described in README.md."
             )
 
         log(f"Processing {len(list_groups)} grouped list(s)...")
