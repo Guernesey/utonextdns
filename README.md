@@ -21,15 +21,7 @@ python -m pip install requests pyyaml
 
 ## Local Usage
 
-1. (Optional) Define environment variables to generate correct GitHub raw URLs in `metadata.json`:
-
-```bash
-export GITHUB_OWNER="<your-user-or-org>"
-export GITHUB_REPO="<your-repo>"
-export GITHUB_BRANCH="main"
-```
-
-2. Create a `.env` file in **YAML** (required). Example:
+1. Create a `.env` file in **YAML** (required). Example:
 
 ```yaml
 bundles:
@@ -49,18 +41,13 @@ bundles:
       - financial
       - bitcoin
       - cryptojacking
-
-github:
-  owner: Guernesey
-  repo: utonextdns
-  branch: main
 ```
 
 - `bundles` describes every published list (comma-separated strings or true YAML lists are both supported). At least one entry is required.
 - Per-category files are always generated for every available UT1 category.
 - When a bundle exceeds ~70 MB, it is automatically split into multiple `UT1-<group>-N.txt` files. The corresponding `ut1<id>.json` entries follow the "UT1 bundle <group>" naming convention and list every part so you can add them all in NextDNS.
 
-3. Run:
+2. Run:
 
 ```bash
 python update_lists.py
