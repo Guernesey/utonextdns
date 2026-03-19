@@ -57,7 +57,10 @@ python update_lists.py
 
 The GitHub Actions workflow (`.github/workflows/update.yml`) runs every day, then automatically commits and pushes updated files.
 
-## License and Credits
+## Credits and License
 
-- **Source data**: The original blacklist data is provided by Université Toulouse 1 Capitole (UT1) and distributed under the **Licence Ouverte Etalab 2.0**.
-- **Repository code**: The code in this repository is released under the **MIT License**.
+This project uses the blacklists provided by **Université Toulouse Capitole (UT1)**.
+
+- **Source:** [https://dsi.ut-capitole.fr/blacklists/](https://dsi.ut-capitole.fr/blacklists/)
+- **License:** These lists are distributed under a [Creative Commons License](https://creativecommons.org/).
+- **Maintainer:** Fabrice Prigent (Toulouse 1 University).

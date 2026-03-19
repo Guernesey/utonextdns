@@ -2,7 +2,7 @@ name: Update UT1 NextDNS Lists
 
 on:
   schedule:
-    - cron: "53 2 * * *"
+    - cron: "22 2 * * *"
   workflow_dispatch:
 
 permissions:
