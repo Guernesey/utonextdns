@@ -1,6 +1,6 @@
 # Name: Toulouse UT1 Bundle - Actuality
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-03-19T09:08:42+00:00
+# Generated: 2026-03-19T09:25:55+00:00
 # Categories: press, radio, fakenews, sports
 
 1-2pitch.com
