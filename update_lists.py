@@ -9,7 +9,6 @@ import os
 import re
 import resource
 import shutil
-import subprocess
 import tarfile
 import time
 from datetime import datetime, timezone
@@ -26,8 +25,6 @@ CATEGORY_WORK_DIR = TMP_DIR / "categories"
 ARCHIVE_PATH = TMP_DIR / "blacklists.tar.gz"
 METADATA_PATH = Path("metadata.json")
 CONFIG_PATH = Path(".env")
-GIT_AUTO_COMMIT_PUSH_ENV = "GIT_AUTO_COMMIT_PUSH"
-GIT_COMMIT_MESSAGE_ENV = "GIT_COMMIT_MESSAGE"
 MAX_BUNDLE_BYTES = 70 * 1024 * 1024
 FILE_PREFIX = "UT1-"
 
@@ -72,16 +69,6 @@ def load_config(path: Path) -> Mapping[str, Any]:
     return data
 
 
-def to_bool(value: Any) -> bool:
-    if isinstance(value, bool):
-        return value
-    if isinstance(value, (int, float)):
-        return value != 0
-    if isinstance(value, str):
-        return value.strip().lower() in {"1", "true", "yes", "on"}
-    return False
-
-
 def apply_env_overrides_from_config(config: Mapping[str, Any]) -> None:
     def set_env_if_missing(env_key: str, value: Any) -> None:
         if value is None or env_key in os.environ:
@@ -93,17 +80,6 @@ def apply_env_overrides_from_config(config: Mapping[str, Any]) -> None:
         set_env_if_missing("GITHUB_OWNER", github_cfg.get("owner"))
         set_env_if_missing("GITHUB_REPO", github_cfg.get("repo"))
         set_env_if_missing("GITHUB_BRANCH", github_cfg.get("branch"))
-
-    git_cfg = config.get("git")
-    if isinstance(git_cfg, Mapping):
-        if "auto_commit" in git_cfg:
-            os.environ[GIT_AUTO_COMMIT_PUSH_ENV] = "1" if to_bool(git_cfg.get("auto_commit")) else "0"
-        if "commit_message" in git_cfg and GIT_COMMIT_MESSAGE_ENV not in os.environ:
-            os.environ[GIT_COMMIT_MESSAGE_ENV] = str(git_cfg.get("commit_message"))
-
-
-def is_truthy(value: str) -> bool:
-    return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
 def log(message: str) -> None:
@@ -121,31 +97,6 @@ def print_performance_summary(start_time: float) -> None:
         f"duration={elapsed:.2f}s, cpu_time={cpu_time:.2f}s, "
         f"max_rss={max_rss_mb:.1f}MB"
     )
-
-
-def run_git_commit_and_push_if_enabled() -> None:
-    if not is_truthy(os.getenv(GIT_AUTO_COMMIT_PUSH_ENV, "false")):
-        return
-
-    paths_to_add = ["dist", str(METADATA_PATH)]
-    paths_to_add.extend(sorted(str(path) for path in Path(".").glob("ut1*.json")))
-
-    log("Staging files for Git commit...")
-    subprocess.run(["git", "add", *paths_to_add], check=True)
-
-    diff_status = subprocess.run(["git", "diff", "--cached", "--quiet"], check=False)
-    if diff_status.returncode == 0:
-        log("No Git changes to commit.")
-        return
-    if diff_status.returncode != 1:
-        raise RuntimeError("Unable to determine staged Git changes.")
-
-    commit_message = os.getenv(GIT_COMMIT_MESSAGE_ENV, "chore: update UT1 NextDNS lists")
-    log(f"Committing with message: {commit_message}")
-    subprocess.run(["git", "commit", "-m", commit_message], check=True)
-    log("Pushing changes...")
-    subprocess.run(["git", "push"], check=True)
-    log("Git commit and push completed.")
 
 
 def download_archive(url: str, output_path: Path) -> None:
@@ -628,7 +579,6 @@ def main() -> None:
         log("Writing metadata files...")
         generate_metadata(metadata, generated_at)
         write_nextdns_metadata_files(metadata)
-        run_git_commit_and_push_if_enabled()
         log(
             "Done. "
             f"{len(all_metadata)} category file(s) processed, "

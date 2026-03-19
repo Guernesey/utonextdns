@@ -54,10 +54,6 @@ github:
   owner: Guernesey
   repo: utonextdns
   branch: main
-
-git:
-  auto_commit: true
-  commit_message: "chore: update UT1 NextDNS lists"
 ```
 
 - `bundles` describes every published list (comma-separated strings or true YAML lists are both supported). At least one entry is required.
@@ -69,8 +65,6 @@ git:
 ```bash
 python update_lists.py
 ```
-
-4. (Optional) Enable automatic Git commit and push directly from the script:
 
 ## Automation
 
