@@ -9,7 +9,6 @@ env/
 
 # Temporary download / extraction data
 tmp/
-.env
 
 # OS / editor
 .DS_Store
