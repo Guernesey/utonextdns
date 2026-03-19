@@ -8,6 +8,7 @@ This repository automatically converts UT1 (Université Toulouse 1 Capitole) bla
 - `dist/toulouse-<category>.txt`: per-category blocklists.
 - `dist/toulouse-bundle-<id>.txt`: grouped blocklists generated from multiple categories.
 - `metadata.json`: generated manifest containing published list IDs, names, descriptions, raw URLs, and entry counts.
+- `ut1<id>.json` (example: `ut1adult.json`): NextDNS-compatible metadata file generated per published list.
 
 ## Requirements
 

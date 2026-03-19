@@ -33,6 +33,21 @@ def ensure_directories() -> None:
     TMP_DIR.mkdir(parents=True, exist_ok=True)
 
 
+def cleanup_previous_outputs() -> None:
+    for output_file in DIST_DIR.glob("toulouse-*.txt"):
+        output_file.unlink(missing_ok=True)
+    for metadata_file in Path(".").glob("ut1*.json"):
+        metadata_file.unlink(missing_ok=True)
+
+
+def cleanup_temporary_files() -> None:
+    ARCHIVE_PATH.unlink(missing_ok=True)
+    try:
+        TMP_DIR.rmdir()
+    except OSError:
+        pass
+
+
 def load_dotenv(path: Path) -> None:
     if not path.exists():
         return
@@ -235,6 +250,16 @@ def build_raw_url(filename: str) -> str:
     )
 
 
+def build_homepage_url() -> str:
+    homepage = os.getenv("HOMEPAGE", "").strip()
+    if homepage:
+        return homepage
+
+    github_owner = os.getenv("GITHUB_OWNER", "your-github-username")
+    github_repo = os.getenv("GITHUB_REPO", "your-repo-name")
+    return f"https://github.com/{github_owner}/{github_repo}"
+
+
 def format_category_name(category: str) -> str:
     return category.replace("_", " ").replace("-", " ").strip().title()
 
@@ -316,10 +341,29 @@ def generate_metadata(metadata: dict[str, dict[str, str | int]], generated_at: s
 
     manifest = {
         "source": SOURCE_URL,
+        "homepage": build_homepage_url(),
         "generated_at": generated_at,
         "categories": categories_manifest,
     }
     METADATA_PATH.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def write_nextdns_metadata_files(metadata: dict[str, dict[str, str | int]]) -> None:
+    homepage = build_homepage_url()
+
+    for category_id in sorted(metadata):
+        category_data = metadata[category_id]
+        file_path = Path(f"ut1{category_id}.json")
+        payload = {
+            "name": str(category_data["name"]),
+            "website": homepage,
+            "description": str(category_data["description"]),
+            "source": {
+                "url": str(category_data["raw_url"]),
+                "format": "domains",
+            },
+        }
+        file_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def process_all_categories() -> dict[str, dict[str, str | int]]:
@@ -401,24 +445,30 @@ def build_group_metadata(
 def main() -> None:
     ensure_directories()
     load_dotenv(ENV_PATH)
-    download_archive(SOURCE_URL, ARCHIVE_PATH)
+    cleanup_previous_outputs()
 
-    all_metadata = process_all_categories()
-    list_groups = parse_list_groups()
+    try:
+        download_archive(SOURCE_URL, ARCHIVE_PATH)
 
-    if list_groups:
-        metadata = build_group_metadata(all_metadata, list_groups)
-    else:
-        categories_to_push = parse_push_categories()
-        metadata = filter_metadata_for_push(all_metadata, categories_to_push)
+        all_metadata = process_all_categories()
+        list_groups = parse_list_groups()
 
-    generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    generate_metadata(metadata, generated_at)
-    print(
-        "Done. "
-        f"{len(all_metadata)} dist file(s) generated, "
-        f"{len(metadata)} published item(s) in metadata.json."
-    )
+        if list_groups:
+            metadata = build_group_metadata(all_metadata, list_groups)
+        else:
+            categories_to_push = parse_push_categories()
+            metadata = filter_metadata_for_push(all_metadata, categories_to_push)
+
+        generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+        generate_metadata(metadata, generated_at)
+        write_nextdns_metadata_files(metadata)
+        print(
+            "Done. "
+            f"{len(all_metadata)} dist file(s) generated, "
+            f"{len(metadata)} published item(s) in metadata.json."
+        )
+    finally:
+        cleanup_temporary_files()
 
 
 if __name__ == "__main__":
