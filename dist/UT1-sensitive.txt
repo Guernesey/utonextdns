@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Sensitive
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-03-20T04:24:12+00:00
+# Generated: 2026-03-21T04:15:49+00:00
 # Categories: agressif, drogue, lingerie, sexual_education, dating, celebrity, mixed_adult
 
 0-24bpautomentes.hu
@@ -702,6 +702,7 @@ stamgon.com
 starnet-world.com
 sunsetandswim.com
 tezenis.com
+thaisclaro.com
 thelingerieaddict.com
 themaidstore.com
 thisislingerie.tumblr.com
