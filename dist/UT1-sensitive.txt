@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Sensitive
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-04-03T04:41:01+00:00
+# Generated: 2026-04-04T04:27:48+00:00
 # Categories: agressif, drogue, lingerie, sexual_education, dating, celebrity, mixed_adult
 
 0-24bpautomentes.hu
@@ -646,16 +646,6 @@ rougegorge.com
 sandycandybikinis.com
 sanscomplexe.com
 sex-relax-erotikshopsd.com
-sexyhint.com
-sheerswim.com
-shoppie.nl
-silk-lace.com
-snifffr.com
-snsbikinis.com
-soglams.com
-sohotclubwear.com
-sohotswimwear.com
-sokolofflingerie.com
 profile.myspace.com
 quedesconneries.com
 rapidforum.com
@@ -697,10 +687,29 @@ zone-videos.net
 zoto.com
 zshare.net
 zvraceny.cz
+sexycurves.co.za
+sexyhint.com
+sexyintimatesstore.com.br
+sexykiss-sexshop-praia.com.br
+sexymenunderwear.com
+sexyshop.vn
+sexyshopbeograd.in.rs
+sexysweb.com
+sheerswim.com
+shoppie.nl
+silk-lace.com
+snifffr.com
+snsbikinis.com
+soglams.com
+sohotclubwear.com
+sohotswimwear.com
+sokolofflingerie.com
 southactresshotmassala.blogspot.com
 stamgon.com
 starnet-world.com
 sunsetandswim.com
+sweetsexylingerie.com
+tegustasexshop.com.ar
 tezenis.com
 thaisclaro.com
 thelingerieaddict.com
@@ -3739,6 +3748,7 @@ easternhoneys.com
 easternlove.com
 easy-chat.net
 easy-dating.org
+easybegenung.com
 easydatingsingles.com
 easyencontro.com
 easyencuentro.com
@@ -6535,6 +6545,7 @@ rencontre-dz.com
 rencontre-echangistes.fr
 rencontre-en-ligne.fr
 rencontre-et-rencontre.com
+rencontre-femme-mariee.fr
 rencontre-femme-riche.com
 rencontre-femme-russe.fr
 rencontre-femmes-russes.fr
@@ -7545,6 +7556,7 @@ taxi-love.com
 taxidermypassions.com
 tchache-rencontre.com
 tchat-ados-belgique.zici.fr
+tchat-delire.org
 tchat-libertin.com
 tchat-rencontre.org
 tchat.voila.fr
