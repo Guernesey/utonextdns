@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Financial
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-04-09T04:44:03+00:00
+# Generated: 2026-04-10T05:10:18+00:00
 # Categories: financial, bitcoin, cryptojacking
 
 10102.io
