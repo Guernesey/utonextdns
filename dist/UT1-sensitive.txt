@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Sensitive
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-04-25T04:46:47+00:00
+# Generated: 2026-04-26T05:22:49+00:00
 # Categories: agressif, drogue, lingerie, sexual_education, dating, celebrity, mixed_adult
 
 0-24bpautomentes.hu
