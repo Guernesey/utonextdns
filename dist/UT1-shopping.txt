@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Shopping
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-09-25T07:54:02+00:00
+# Generated: 2026-09-26T07:47:19+00:00
 # Categories: shopping
 
 001-amulette.de
