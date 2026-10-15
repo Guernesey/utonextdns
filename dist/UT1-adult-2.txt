@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Adult
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-10-14T07:42:32+00:00
+# Generated: 2026-10-15T07:30:21+00:00
 # Categories: adult
 
 milf-porn-movies-arrow.blogspot.pe
@@ -1276833,7 +1276833,6 @@ super-woman.net
 super-x-ray-ted.tumblr.com
 super-xxx-charged.tumblr.com
 super-yowser.tumblr.com
-super.cz
 super.ovh.org
 super.sex.shop.free.fr
 super.voyeur.online.fr
