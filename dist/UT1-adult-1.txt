@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Adult
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-10-16T07:15:02+00:00
+# Generated: 2026-10-17T07:00:47+00:00
 # Categories: adult
 
 0-12kids.com
