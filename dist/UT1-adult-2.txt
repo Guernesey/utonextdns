@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Adult
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-10-19T07:52:04+00:00
+# Generated: 2026-10-20T07:39:00+00:00
 # Categories: adult
 
 milf-porn-movies-arrow.blogspot.pe
