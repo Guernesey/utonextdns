@@ -1,7 +1,7 @@
 {
   "source": "https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz",
   "homepage": "https://github.com/Guernesey/utonextdns",
-  "generated_at": "2026-10-21T07:43:43+00:00",
+  "generated_at": "2026-10-26T07:51:55+00:00",
   "categories": [
     {
       "id": "actuality",
@@ -20,7 +20,7 @@
         "https://raw.githubusercontent.com/Guernesey/utonextdns/main/dist/UT1-adult-1.txt",
         "https://raw.githubusercontent.com/Guernesey/utonextdns/main/dist/UT1-adult-2.txt"
       ],
-      "entries_count": 4589968
+      "entries_count": 4589967
     },
     {
       "id": "financial",

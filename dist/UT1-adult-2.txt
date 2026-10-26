@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Adult
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-10-21T07:43:35+00:00
+# Generated: 2026-10-26T07:51:47+00:00
 # Categories: adult
 
 milf-porn-movies-arrow.blogspot.pe
@@ -1870619,7 +1870619,6 @@ yontuyoujizz.com
 yonymar.tumblr.com
 yonyou456.com
 yooatricledirectory.info
-yoob.com
 yoobeli.com
 yoodutkqmqfkgdp.com
 yoogen.tumblr.com
