@@ -1,7 +1,7 @@
 {
   "source": "https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz",
   "homepage": "https://github.com/Guernesey/utonextdns",
-  "generated_at": "2026-10-27T07:56:45+00:00",
+  "generated_at": "2026-10-28T08:38:20+00:00",
   "categories": [
     {
       "id": "actuality",
@@ -38,7 +38,7 @@
       "raw_urls": [
         "https://raw.githubusercontent.com/Guernesey/utonextdns/main/dist/UT1-sensitive.txt"
       ],
-      "entries_count": 12221
+      "entries_count": 12232
     },
     {
       "id": "shopping",

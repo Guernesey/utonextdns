@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Sensitive
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-10-27T07:56:37+00:00
+# Generated: 2026-10-28T08:38:14+00:00
 # Categories: agressif, drogue, lingerie, sexual_education, dating, celebrity, mixed_adult
 
 0-24bpautomentes.hu
@@ -688,6 +688,10 @@ yummmyasians.tumblr.com
 1000.members0703.kci.org
 123zip.com
 22chaos.tumblr.com
+24rc.biz
+24rc.bz
+24rc.cc
+24rc.to
 316stone.tumblr.com
 420.org
 420girls.com
@@ -720,6 +724,9 @@ atforum.com
 ayahuasca.com
 azarius.net
 beerinfo.com
+bigrc.biz
+bigrc.hk
+bigrc1.cc
 biopark.org
 biosmoke.com
 bizone.8m.com
@@ -2253,6 +2260,7 @@ nomercy.nl
 norml.org
 offar.com
 oflc.gov.au
+olks.cx
 onsitedrugtesting.com
 opioids.com
 ornorml.org
@@ -2668,6 +2676,9 @@ thefane.org
 thefreshscent.com
 third-plateau.org
 topcannabis.hypermart.net
+tornet.bz
+tornet.click
+tornet.pw
 trashed.co.uk
 tripzine.com
 tryptamind.com
