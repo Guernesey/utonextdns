@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Adult
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-11-16T09:50:24+00:00
+# Generated: 2026-11-17T10:47:24+00:00
 # Categories: adult
 
 0-12kids.com
@@ -266273,6 +266273,7 @@ annuaire-du-xxx.com
 annuaire-echangiste.com
 annuaire-erotique.com
 annuaire-erotique.fr
+annuaire-erotique.net
 annuaire-escort-girl-paris.com
 annuaire-escort-girl.com
 annuaire-et-sexe.ifrance.com
@@ -755798,6 +755799,7 @@ camgirl-webcam.blogspot.sn
 camgirl-webcam.blogspot.tw
 camgirl-webcam.blogspot.ug
 camgirl.at
+camgirl.beauty
 camgirl.best
 camgirl.com
 camgirl.de
@@ -788146,6 +788148,7 @@ casadelsexo.com
 casadelvicio.com
 casadelviciogay.com
 casadelyaoi.tumblr.com
+casademaridocornomanso.blogspot.com
 casademassagem.net
 casadeputas.blogs.sapo.pt
 casadeputta.com
@@ -1342698,6 +1342701,7 @@ escortinsingapore.info
 escortinsydney.info
 escortintoronto.info
 escortinutrecht.nl
+escortinxiamen.com
 escortinzeeland.nl
 escortireland.net
 escortistanbul.co
@@ -1849662,6 +1849666,7 @@ gsqgtsadyxacpdk.ru
 gsqrqzdulsseukeguxkbybzxhmixkagsutot-dot-cryptic-now-290917.ey.r.appspot.com
 gsqttyuyeixbqmup-dot-millinium.ey.r.appspot.com
 gsquareconcrete.com
+gsquirt.com
 gsqzlvymha.pink
 gsqzlvymha.pub
 gsqzlvymha.website
@@ -2514468,6 +2514473,7 @@ lookme-devillersjj.blogspot.sk
 lookme-devillersjj.blogspot.sn
 lookme-devillersjj.blogspot.tw
 lookme-devillersjj.blogspot.ug
+lookmet.com
 lookmodels.ch
 lookmodeusa.com
 lookmybabes-blog.tumblr.com
@@ -2676323,6 +2676329,3 @@ milf-porn-movies-arrow.blogspot.lu
 milf-porn-movies-arrow.blogspot.md
 milf-porn-movies-arrow.blogspot.mk
 milf-porn-movies-arrow.blogspot.mx
-milf-porn-movies-arrow.blogspot.my
-milf-porn-movies-arrow.blogspot.nl
-milf-porn-movies-arrow.blogspot.no
