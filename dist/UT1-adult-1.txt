@@ -1,6 +1,6 @@
 # Name: UT1 Bundle - Adult
 # Source: https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
-# Generated: 2026-11-17T10:47:24+00:00
+# Generated: 2026-11-18T10:14:55+00:00
 # Categories: adult
 
 0-12kids.com
@@ -2628820,6 +2628820,7 @@ mayasvids.com
 mayates-y-chacales-3.tumblr.com
 mayatharavadu.com
 mayatrap.tumblr.com
+mayawhse.com
 mayaxxx.com
 mayayazilim.com
 maybach-center.de
@@ -2676328,4 +2676329,3 @@ milf-porn-movies-arrow.blogspot.lt
 milf-porn-movies-arrow.blogspot.lu
 milf-porn-movies-arrow.blogspot.md
 milf-porn-movies-arrow.blogspot.mk
-milf-porn-movies-arrow.blogspot.mx
